@@ -1,6 +1,5 @@
 # JAM
-### Just another Minecraft... or whatever
----
+### Just Another Minecraft... or whatever
 ## Description
 JAM is intended as a game/render engine. Being the sole developer I suppose it matters why its called JAM.
 
@@ -11,7 +10,6 @@ Ideally the engine will be extremely customizable.
 This would mean the whole system needs to expose some pretty low level OpenGL functionality for high-end manipulation.
 
 ## Dependencies
----
 - glfw
 - glad
 - json_cpp
@@ -19,7 +17,6 @@ This would mean the whole system needs to expose some pretty low level OpenGL fu
 - assimp
 
 ## Current state
----
 
 The system is currently based around 3 main modules:
 -	GLFW
