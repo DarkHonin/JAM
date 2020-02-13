@@ -1,0 +1,7 @@
+project(libs)
+
+message(STATUS "Building libs...")
+
+add_subdirectory(glad)
+add_subdirectory(json_cfg)
+add_subdirectory(modules)

@@ -1,0 +1,11 @@
+project(glad)
+
+include_directories(include)
+file(GLOB glad_SRC "src/*.c" "include/**.h")
+
+set_property(GLOBAL APPEND PROPERTY jam_include_files ${glad_SOURCE_DIR}/include)
+
+get_property(JAM_HEADERS GLOBAL PROPERTY jam_include_files)
+
+add_library(glad STATIC ${glad_SRC})
+target_include_directories(glad PUBLIC include)

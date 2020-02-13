@@ -1,0 +1,19 @@
+{
+	"fps" : 30,
+	"fullscreen" : false,
+	"resolution" : 
+	{
+		"h" : 400,
+		"w" : 400
+	},
+	"shaders" : {
+		"model" : {
+			"VERTEX" : "../data/vertex.glsl",
+			"FRAGMENT" : "../data/fragment.glsl",
+			"material" : 0
+		}
+	},
+	"models" : [
+		"../data/model/cube.dae"
+	]
+}

@@ -1,0 +1,2 @@
+C:/msys64/mingw64/bin/ar.exe qc libjsonCFG.a  CMakeFiles/jsonCFG.dir/src/jsoncfg.cpp.obj
+C:/msys64/mingw64/bin/ranlib.exe libjsonCFG.a

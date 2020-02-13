@@ -1,0 +1,7 @@
+C:/Users/Honin/Documents/Code/personal_projects/JAM/renderengine/libs/modules/buid/CMakeFiles/modules.dir
+C:/Users/Honin/Documents/Code/personal_projects/JAM/renderengine/libs/modules/buid/CMakeFiles/rebuild_cache.dir
+C:/Users/Honin/Documents/Code/personal_projects/JAM/renderengine/libs/modules/buid/CMakeFiles/test.dir
+C:/Users/Honin/Documents/Code/personal_projects/JAM/renderengine/libs/modules/buid/CMakeFiles/edit_cache.dir
+C:/Users/Honin/Documents/Code/personal_projects/JAM/renderengine/libs/modules/buid/jsoncpp/CMakeFiles/jsonCFG.dir
+C:/Users/Honin/Documents/Code/personal_projects/JAM/renderengine/libs/modules/buid/jsoncpp/CMakeFiles/edit_cache.dir
+C:/Users/Honin/Documents/Code/personal_projects/JAM/renderengine/libs/modules/buid/jsoncpp/CMakeFiles/rebuild_cache.dir

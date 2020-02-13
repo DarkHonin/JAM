@@ -1,0 +1,26 @@
+cmake_minimum_required ( VERSION 3.0 )
+project ( JAMRender )
+
+file(GLOB renderSrc "src/**.cpp" "src/**/**.cpp" "src/**/**/**.cpp" "src/pipelines/**.cpp" "src/entity/**.cpp" "src/object/**.cpp" "src/containers/**.cpp" "src/shaders/**.cpp" "include/**.hpp")
+_git(jsoncpp_lib https://github.com/open-source-parsers/jsoncpp.git jsoncpp)
+_require(glm https://codeload.github.com/g-truc/glm/zip/0.9.9.5 glm-0.9.9.5)
+
+set_property(GLOBAL APPEND PROPERTY jam_include_files ${JAMRender_SOURCE_DIR}/include)
+
+get_property(JAM_HEADERS GLOBAL PROPERTY jam_include_files)
+
+_git(glfw https://github.com/glfw/glfw.git glfw-3.3)
+set(BUILD_SHARED_LIBS OFF)
+add_subdirectory(libs)
+
+find_library(glad REQUIRED)
+find_library(JSONCPP REQUIRED)
+
+message(STATUS ${jam_lib_inc})
+
+include_directories(libs/modules/include)
+include_directories(libs/json_cfg/include)
+add_library(JAMRender STATIC ${renderSrc})
+target_include_directories(JAMRender PUBLIC include ${JAM_HEADERS} /extlib/include ${jam_lib_inc})
+
+target_link_libraries(JAMRender jsonCFG modules glad glfw JAMTools jsoncpp assimp)

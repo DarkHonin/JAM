@@ -1,0 +1,3 @@
+C:/Users/Honin/Documents/Code/personal_projects/JAM/renderengine/libs/json_cfg/build/CMakeFiles/jsonCFG.dir
+C:/Users/Honin/Documents/Code/personal_projects/JAM/renderengine/libs/json_cfg/build/CMakeFiles/edit_cache.dir
+C:/Users/Honin/Documents/Code/personal_projects/JAM/renderengine/libs/json_cfg/build/CMakeFiles/rebuild_cache.dir

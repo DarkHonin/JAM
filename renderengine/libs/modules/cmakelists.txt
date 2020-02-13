@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 3.15)
+project(modules)
+
+set(modules_INCLUDE_DIRECTORY ${PROJECT_SOURCE_DIR}/include)
+
+include_directories(${modules_INCLUDE_DIRECTORY})
+
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -I/extlib/include -L/extlib/lib -L/extlib/bin" )
+
+file(GLOB moduleSRC "src/*.cpp")
+
+set_property(GLOBAL APPEND PROPERTY jam_include_files ${PROJECT_SOURCE_DIR}/include)
+get_property(JAM_HEADERS GLOBAL PROPERTY jam_include_files)
+
+include_directories(${JAM_HEADERS})
+
+add_library(modules ${moduleSRC})
+target_link_libraries(modules jsonCFG jsoncpp)

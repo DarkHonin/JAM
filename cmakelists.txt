@@ -1,0 +1,75 @@
+cmake_minimum_required ( VERSION 3.3 )
+project ( engine )
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -I/extlib/include -L/extlib/lib -L/extlib/bin -std=gnu++17" )
+
+list(APPEND CMAKE_PREFIX_PATH "/extlib/lib")
+
+
+set(GLM_QUIET ON)
+set (BUILD_SHARED_LIBS OFF)
+set(GLM_TEST_ENABLE OFF)
+
+add_compile_definitions(ASSIMP_BUILD_BOOST_WORKAROUND)
+set(JSONCPP_WITH_TESTS off)
+set(ASSIMP_BUILD_TESTS off)
+set(ASSIMP_BUILD_ASSIMP_TOOLS off)
+set(CXX_STANDARD c++17)
+
+macro(_git prjname url prjdir)
+if(NOT TARGET ${prjname})
+		set(LIB_DIR ${CMAKE_BINARY_DIR}/libs/${prjname})
+		execute_process(COMMAND git clone ${url} ${LIB_DIR})
+		add_subdirectory(${LIB_DIR} ${CMAKE_BINARY_DIR}/${prjname})
+		include_directories(${LIB_DIR}/include)
+	endif(NOT TARGET ${prjname})
+	
+endmacro(_git)
+
+
+macro(_require prjname url prjdir)
+find_library(${prjname} REQUIRED)
+if(NOT TARGET ${prjname} OR ${prjname}-NOTFOUND)
+	message(STATUS "Adding Project: " ${prjname} )
+	set(ASSET_SRC ${CMAKE_BINARY_DIR}/assets/${prjname}.zip )
+	set(LIB_DIR ${CMAKE_BINARY_DIR}/libs/${prjname})
+		message(STATUS "LIBDIR: 	" ${LIB_DIR} )
+		message(STATUS "ASSET SRC: 	" ${ASSET_SRC})
+		make_directory(${LIB_DIR})
+		if(NOT EXISTS ${ASSET_SRC} )
+		file(DOWNLOAD ${url} ${ASSET_SRC})
+			execute_process(COMMAND unzip -q -o ${ASSET_SRC} -d ${LIB_DIR})
+			endif(NOT EXISTS ${ASSET_SRC})
+		add_subdirectory(${LIB_DIR}/${prjdir} ${CMAKE_BINARY_DIR}/${prjname})
+		include_directories(${LIB_DIR}/${prjdir}/include ${CMAKE_BINARY_DIR}/${prjname}/include)
+	endif(NOT TARGET ${prjname} OR ${prjname}-NOTFOUND)
+	endmacro(_require)
+
+	
+	message(STATUS "install path:" ${CMAKE_INSTALL_PREFIX} )
+	
+	set(GLM_QUIET ON)
+	set(GLFW_BUILD_EXAMPLES off)
+	set(GLFW_BUILD_TESTS off)
+	
+	
+	
+	
+	install(DIRECTORY "data" DESTINATION .)
+	
+
+add_subdirectory(tools)
+add_subdirectory(renderengine)
+_git(jsoncpp_lib https://github.com/open-source-parsers/jsoncpp.git jsoncpp)
+
+
+add_executable( engine main.cpp )
+
+#include_directories(engine PUBLIC ${Assimp_SOURCE_DIR}/include PUBLIC ${Assimp_BINARY_DIR}/include)
+get_property(JAM_HEADERS GLOBAL PROPERTY jam_include_files)
+target_link_libraries(engine JAMRender)
+target_link_libraries(engine JAMTools JSONCPP modules)
+target_include_directories(engine PUBLIC /extlib/include ${JAM_HEADERS})
+
+#get_target_property(JSON_INC_PATH jsoncpp_lib INTERFACE_INCLUDE_DIRECTORIES)
+#include_directories(${JSON_INC_PATH})

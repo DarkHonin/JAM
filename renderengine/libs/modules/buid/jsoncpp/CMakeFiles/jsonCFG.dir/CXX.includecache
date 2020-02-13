@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Honin/Documents/Code/personal_projects/JAM/renderengine/libs/json_cfg/include/jsoncfg/jsonconfig.hpp
+string
+-
+fstream
+-
+iostream
+-
+json/json.h
+C:/Users/Honin/Documents/Code/personal_projects/JAM/renderengine/libs/json_cfg/include/jsoncfg/json/json.h
+map
+-
+
+C:/Users/Honin/Documents/Code/personal_projects/JAM/renderengine/libs/json_cfg/src/jsoncfg.cpp
+jsoncfg/jsonconfig.hpp
+C:/Users/Honin/Documents/Code/personal_projects/JAM/renderengine/libs/json_cfg/src/jsoncfg/jsonconfig.hpp
+iostream
+-
+
